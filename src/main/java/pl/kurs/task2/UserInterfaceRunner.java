@@ -1,6 +1,7 @@
 package pl.kurs.task2;
 
 import pl.kurs.task2.exception.InvalidPeselException;
+import pl.kurs.task2.services.ValidatorService;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -10,11 +11,11 @@ public class UserInterfaceRunner {
         Scanner scanner = new Scanner(System.in);
         scanner.useLocale(Locale.US);
         System.out.println("Podaj swoje imie:");
-        String name = scanner.nextLine();
+        String name = "Sebastian";//scanner.nextLine();
         System.out.println(ValidatorService.nameLength(name).orElseGet(() -> 0));
 
         System.out.println("Podaj swój numer PESEL:");
-        String pesel = scanner.nextLine();
+        String pesel = "21281705415"; //scanner.nextLine();
         System.out.println(ValidatorService.getBirthFromPesel(pesel));
         scanner.close();
     }
