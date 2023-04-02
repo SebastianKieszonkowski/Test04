@@ -1,4 +1,4 @@
-package pl.kurs.task1.service;
+package pl.kurs.task1.services;
 
 import pl.kurs.task1.models.MinMax;
 

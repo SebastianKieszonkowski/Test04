@@ -10,16 +10,16 @@ import java.util.List;
 public class PeopleRunner {
     public static void main(String[] args) throws Exception {
         List<Person> peopleList = new ArrayList<>();
-        peopleList.add(new Person("Marian", "Sulejman", "Warszawa",37));
-        peopleList.add(new Person("Wiesław", "Nowak", "Kozienice",26));
-        peopleList.add(new Person("Robert", "Traczyk", "Kozienice",50));
-        peopleList.add(new Person("Ada", "Kalbarczyk", "Kozienice",31));
-        peopleList.add(new Person("Karolina", "Turka", null,42));
-        peopleList.add(new Person("Julia", "Wawer", "Radom",12));
-        peopleList.add(new Person("Jarosław", "Dubacki", "Pionki",60));
-        peopleList.add(new Person("Grzegorz", "Lech", "Radom",17));
-        peopleList.add(new Person("Sylwia", "Gocłowska", "Piaseczno",29));
-        peopleList.add(new Person("Piotr", "Paluszek", "Kraków",20));
+        peopleList.add(new Person("Marian", "Sulejman", "Warszawa", 37));
+        peopleList.add(new Person("Wiesław", "Nowak", "Kozienice", 26));
+        peopleList.add(new Person("Robert", "Traczyk", "Kozienice", 50));
+        peopleList.add(new Person("Ada", "Kalbarczyk", "Kozienice", 31));
+        peopleList.add(new Person("Karolina", "Turka", null, 42));
+        peopleList.add(new Person("Julia", "Wawer", "Radom", 12));
+        peopleList.add(new Person("Jarosław", "Dubacki", "Pionki", 60));
+        peopleList.add(new Person("Grzegorz", "Lech", "Radom", 17));
+        peopleList.add(new Person("Sylwia", "Gocłowska", "Piaseczno", 29));
+        peopleList.add(new Person("Piotr", "Paluszek", "Kraków", 20));
 
         System.out.println("Najstarsza kobieta to: " + PeopleService.findTheOldestWomen(peopleList));
         System.out.println("Średnia wieku osób na liście to: " + PeopleService.averageAge(peopleList));

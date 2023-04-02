@@ -11,12 +11,12 @@ public class UserInterfaceRunner {
         Scanner scanner = new Scanner(System.in);
         scanner.useLocale(Locale.US);
         System.out.println("Podaj swoje imie:");
-        String name = "Sebastian";//scanner.nextLine();
-        System.out.println(ValidatorService.nameLength(name).orElseGet(() -> 0));
+        String name = scanner.nextLine();
+        System.out.println("Twoje imie ma długość: " + ValidatorService.nameLength(name).orElseGet(() -> 0));
 
         System.out.println("Podaj swój numer PESEL:");
-        String pesel = "21281705415"; //scanner.nextLine();
-        System.out.println(ValidatorService.getBirthFromPesel(pesel));
+        String pesel = scanner.nextLine();
+        System.out.println("Twoja data urodzenia to: " + ValidatorService.getBirthFromPesel(pesel));
         scanner.close();
     }
 }

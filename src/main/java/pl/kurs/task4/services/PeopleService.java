@@ -55,7 +55,7 @@ public class PeopleService {
     }
 
     public static Set<String> citesList(List<Person> personList) {
-         return Optional.ofNullable(personList).orElse(Collections.emptyList()).stream()
+        return Optional.ofNullable(personList).orElse(Collections.emptyList()).stream()
                 .filter(x -> x.getBirthCity() != null)
                 .map(x -> x.getBirthCity())
                 .collect(Collectors.toSet());

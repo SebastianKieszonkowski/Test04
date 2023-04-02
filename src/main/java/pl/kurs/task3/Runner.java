@@ -8,17 +8,16 @@ public class Runner {
         List<Integer> integerList = List.of(59, 2, 17, 4, 888, 6, 147, 13, 22);
         List<Integer> integerList2 = List.of(59, 2, 17);
 
-        System.out.println(method(integerList2));
-
+        System.out.println(getFiveTheGreaterElements(integerList));
     }
 
-    public static List<Integer> method(List<Integer> integerList) {
+    public static List<Integer> getFiveTheGreaterElements(List<Integer> integerList) {
         return Optional.of(
-                Optional.ofNullable(integerList).orElseGet(Collections::emptyList).stream()
-                        .sorted(Collections.reverseOrder())
-                        .limit(5)
-                        .collect(Collectors.toList())
-        ).filter(x -> x.size() >= 5)
+                        Optional.ofNullable(integerList).orElseGet(Collections::emptyList).stream()
+                                .sorted(Collections.reverseOrder())
+                                .limit(5)
+                                .collect(Collectors.toList())
+                ).filter(x -> x.size() >= 5)
                 .orElseGet(Collections::emptyList);
 
     }
