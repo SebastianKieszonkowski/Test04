@@ -7,20 +7,21 @@ import java.util.Optional;
 
 public class ValidatorService {
 
-    public static Optional<Integer> nameLength(String name) {
-        if (name.isEmpty())
-            return Optional.empty();
-        return Optional.of(name.length());
+    public static Integer nameLength(String name) {
+        return Optional.ofNullable(name)
+                .map(String::length)
+                .orElse(0);
     }
 
     public static LocalDate getBirthFromPesel(String pesel) throws InvalidPeselException {
-        if (pesel == null || pesel.length() != 11)
-            throw new InvalidPeselException("Pesel niewłaściwy!");
-        return changStringToData(pesel.substring(0, 6));
+        return Optional.ofNullable(pesel).filter(x -> x.length() == 11)
+                .map(x -> x.substring(0,6))
+                .map(ValidatorService::changStringToData)
+                .orElseThrow(() -> new InvalidPeselException("Pesel niewłaściwy!"));
     }
 
     private static LocalDate changStringToData(String inputString) {
-        int lastTwoNumberYear = Integer.parseInt(inputString.substring(0, 2));
+        int rawYear = Integer.parseInt(inputString.substring(0, 2));
         int monthAndCentury = Integer.parseInt(inputString.substring(2, 4));
         int day = Integer.parseInt(inputString.substring(4));
 
@@ -28,19 +29,19 @@ public class ValidatorService {
         int month;
         switch (monthAndCentury / 10) {
             case 8, 9 -> {
-                year = 1800 + lastTwoNumberYear;
+                year = 1800 + rawYear;
                 month = monthAndCentury - 80;
             }
             case 2, 3 -> {
-                year = 2000 + lastTwoNumberYear;
+                year = 2000 + rawYear;
                 month = monthAndCentury - 20;
             }
             case 4, 5 -> {
-                year = 2100 + lastTwoNumberYear;
+                year = 2100 + rawYear;
                 month = monthAndCentury - 40;
             }
             default -> {
-                year = 1900 + lastTwoNumberYear;
+                year = 1900 + rawYear;
                 month = monthAndCentury;
             }
         }

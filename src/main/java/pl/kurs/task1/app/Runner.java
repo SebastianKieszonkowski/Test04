@@ -1,5 +1,6 @@
-package pl.kurs.task1;
+package pl.kurs.task1.app;
 
+import pl.kurs.task1.models.MinMax;
 import pl.kurs.task1.models.Person;
 import pl.kurs.task1.services.MinMaxService;
 
@@ -21,7 +22,9 @@ public class Runner {
         people.add(new Person("Bolek", "Krawczyk", 10, 15.0));
         people.add(new Person("Karol", "Sobelski", 32, 89.0));
 
-        System.out.println(MinMaxService.getMinAndMax(people));
+        MinMax<Person> minMax = MinMaxService.getMinAndMax(people);
+        System.out.println(minMax.getMax());
+        System.out.println(minMax.getMin());
 
     }
 }

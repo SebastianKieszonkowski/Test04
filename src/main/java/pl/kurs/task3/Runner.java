@@ -8,7 +8,7 @@ public class Runner {
         List<Integer> integerList = List.of(59, 2, 17, 4, 888, 6, 147, 13, 22);
         List<Integer> integerList2 = List.of(59, 2, 17);
 
-        System.out.println(getFiveTheGreaterElements(integerList));
+        System.out.println("Pięć największych liczb z listy to: " + getFiveTheGreaterElements(integerList));
     }
 
     public static List<Integer> getFiveTheGreaterElements(List<Integer> integerList) {

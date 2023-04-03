@@ -1,4 +1,4 @@
-package pl.kurs.task4;
+package pl.kurs.task4.app;
 
 import pl.kurs.task4.models.Gender;
 import pl.kurs.task4.models.Person;

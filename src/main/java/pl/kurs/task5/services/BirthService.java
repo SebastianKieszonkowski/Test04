@@ -37,7 +37,7 @@ public class BirthService {
         int monthCounter = 0;
         while (true) {
             LocalDate iterationData = startDate.plusMonths(monthCounter);
-            if (iterationData.getDayOfWeek() == DayOfWeek.FRIDAY) {
+            if (iterationData.getDayOfWeek() == DayOfWeek.FRIDAY && birthDate.isBefore(iterationData)) {
                 dateOfFirstFriday13 = iterationData;
                 break;
             } else

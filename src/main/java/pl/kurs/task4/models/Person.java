@@ -3,13 +3,13 @@ package pl.kurs.task4.models;
 public class Person {
     private String name;
     private String surname;
-    private String birthCity;
+    private String city;
     private int age;
 
-    public Person(String name, String surname, String birthCity, int age) {
+    public Person(String name, String surname, String city, int age) {
         this.name = name;
         this.surname = surname;
-        this.birthCity = birthCity;
+        this.city = city;
         this.age = age;
     }
 
@@ -21,8 +21,8 @@ public class Person {
         return surname;
     }
 
-    public String getBirthCity() {
-        return birthCity;
+    public String getCity() {
+        return city;
     }
 
     public int getAge() {
@@ -34,7 +34,7 @@ public class Person {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", birthCity='" + birthCity + '\'' +
+                ", birthCity='" + city + '\'' +
                 ", age=" + age +
                 '}';
     }

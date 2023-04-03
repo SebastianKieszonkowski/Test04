@@ -1,9 +1,10 @@
-package pl.kurs.task5;
+package pl.kurs.task5.app;
 
 import pl.kurs.task5.exception.InvalidBirthDateException;
 import pl.kurs.task5.services.BirthService;
 
 import java.time.LocalDate;
+import java.time.format.TextStyle;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -21,8 +22,10 @@ public class BirthRunner {
         System.out.println("Żyjesz już " + BirthService.daysOld(dateOfBirth) + " dni.");
         System.out.println("Żyjesz już " + BirthService.monthsOld(dateOfBirth) + " miesięcy.");
         System.out.println("Żyjesz już " + BirthService.yearsOld(dateOfBirth) + " lat.");
-        System.out.println("Dzień tygodnia w którym się urodziłeś/łaś to: " + BirthService.dayOfWeekYourBirth(dateOfBirth));
-        System.out.println("Następny piątek 13-tegoo po twoich urodzinach był: " + BirthService.nextFriday13AfterYourBirth(dateOfBirth));
+        System.out.println("Dzień tygodnia w którym się urodziłeś/łaś to: "
+                + BirthService.dayOfWeekYourBirth(dateOfBirth).getDisplayName(TextStyle.FULL, new Locale("pl")));
+        System.out.println("Następny piątek 13-tegoo po twoich urodzinach był: "
+                + BirthService.nextFriday13AfterYourBirth(dateOfBirth));
 
 
     }

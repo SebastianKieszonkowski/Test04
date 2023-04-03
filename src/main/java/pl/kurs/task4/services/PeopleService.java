@@ -45,8 +45,8 @@ public class PeopleService {
 
     public static String citWitchTheGreaterNumberOfCitizen(List<Person> personList) {
         return Optional.ofNullable(personList).orElse(Collections.emptyList()).stream()
-                .filter(x -> x.getBirthCity() != null)
-                .collect(Collectors.groupingBy(Person::getBirthCity, Collectors.counting()))
+                .filter(x -> x.getCity() != null)
+                .collect(Collectors.groupingBy(Person::getCity, Collectors.counting()))
                 .entrySet()
                 .stream()
                 .max(Comparator.comparing(Map.Entry::getValue))
@@ -56,8 +56,8 @@ public class PeopleService {
 
     public static Set<String> citesList(List<Person> personList) {
         return Optional.ofNullable(personList).orElse(Collections.emptyList()).stream()
-                .filter(x -> x.getBirthCity() != null)
-                .map(x -> x.getBirthCity())
+                .filter(x -> x.getCity() != null)
+                .map(x -> x.getCity())
                 .collect(Collectors.toSet());
     }
 }
