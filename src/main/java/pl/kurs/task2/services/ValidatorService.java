@@ -14,7 +14,7 @@ public class ValidatorService {
     }
 
     public static LocalDate getBirthFromPesel(String pesel) throws InvalidPeselException {
-        return Optional.ofNullable(pesel).filter(x -> x.length() == 11)
+        return Optional.ofNullable(pesel).filter(x -> x.matches("\\d{11}"))
                 .map(x -> x.substring(0,6))
                 .map(ValidatorService::changStringToData)
                 .orElseThrow(() -> new InvalidPeselException("Pesel niewłaściwy!"));

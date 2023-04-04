@@ -1,11 +1,11 @@
 package pl.kurs.task4.app;
 
-import pl.kurs.task4.models.Gender;
 import pl.kurs.task4.models.Person;
 import pl.kurs.task4.services.PeopleService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class PeopleRunner {
     public static void main(String[] args) throws Exception {
@@ -25,8 +25,10 @@ public class PeopleRunner {
         System.out.println("Średnia wieku osób na liście to: " + PeopleService.averageAge(peopleList));
         System.out.println("Średni wiek mężczyzn z listy to: " + PeopleService.manAverageAge(peopleList));
         System.out.println("Średni wiek kobiet z listy to: " + PeopleService.womanAverageAge(peopleList));
-        Gender gender = Gender.MALE;
-        System.out.println("Średni wiek " + gender + " z listy to: " + PeopleService.averageAgeOfSpecificGender(peopleList, gender));
+
+        Predicate<Person> womanPredicate = x -> x.getName().endsWith("a");
+        System.out.println("Średni wiek kobiet z listy to: " + PeopleService.averageAgeOfSpecificGender(peopleList, womanPredicate));
+
         System.out.println("Miasto z największą liczbą osób z listy to: " + PeopleService.citWitchTheGreaterNumberOfCitizen(peopleList));
         System.out.println("Lista miast występujących na liście to: " + PeopleService.citesList(peopleList));
     }

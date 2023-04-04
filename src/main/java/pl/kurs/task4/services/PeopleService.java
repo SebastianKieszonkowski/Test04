@@ -2,9 +2,9 @@ package pl.kurs.task4.services;
 
 import pl.kurs.task4.exception.NoWomenException;
 import pl.kurs.task4.models.Person;
-import pl.kurs.task4.models.Gender;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class PeopleService {
@@ -24,23 +24,19 @@ public class PeopleService {
     }
 
     public static double manAverageAge(List<Person> personList) {
-        return Optional.ofNullable(personList).orElse(Collections.emptyList()).stream()
-                .filter(x -> !x.getName().endsWith("a"))
-                .mapToInt(Person::getAge)
-                .average()
-                .orElse(0.0);
+        return averageAgeOfSpecificGender(personList, x -> !x.getName().endsWith("a"));
     }
 
     public static double womanAverageAge(List<Person> personList) {
+        return averageAgeOfSpecificGender(personList, x -> x.getName().endsWith("a"));
+    }
+
+    public static double averageAgeOfSpecificGender(List<Person> personList, Predicate<Person> condition) {
         return Optional.ofNullable(personList).orElse(Collections.emptyList()).stream()
-                .filter(x -> x.getName().endsWith("a"))
+                .filter(condition)
                 .mapToInt(Person::getAge)
                 .average()
                 .orElse(0.0);
-    }
-
-    public static double averageAgeOfSpecificGender(List<Person> personList, Gender gender) {
-        return gender == Gender.MALE ? manAverageAge(personList) : womanAverageAge(personList);
     }
 
     public static String citWitchTheGreaterNumberOfCitizen(List<Person> personList) {
